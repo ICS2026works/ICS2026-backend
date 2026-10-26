@@ -75,12 +75,13 @@ public class Program
 
         builder.Services.AddHealthChecks();
 
+        var connectionString = builder.Configuration.GetConnectionString("Dsw2025TpiEntities") 
+        ?? throw new InvalidOperationException("Falta la cadena de conexi√≥n.");
         builder.Services.AddDbContext<AuthenticateContext>(options =>
         {
-            options.UseSqlServer(builder.Configuration.GetConnectionString("Dsw2025TpiEntities"));
+            options.UseSqlServer(connectionString);
         });
 
-        // --- AQUÕ EST¡ EL CAMBIO ---
         builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
         {
             options.Password = new PasswordOptions
