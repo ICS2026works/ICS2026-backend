@@ -38,4 +38,10 @@ jobs:
           docker push ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           docker push ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
           
-      # EL PASO 5 DE AZURE VA EN LA HU26
+      - name: 5. Desplegar el contenedor en Azure App Service
+        if: github.event_name != 'pull_request'
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ secrets.APP_SERVICE_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: ${{ env.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
