@@ -256,3 +256,5 @@ public class Program
         app.Run();
     }
 }
+
+public partial class Program { }
