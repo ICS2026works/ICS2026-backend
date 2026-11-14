@@ -16,7 +16,7 @@ using System.Text.Json.Serialization;
 
 namespace Dsw2025Tpi.Api;
 
-public class Program
+public partial class Program
 {
     public static async Task Main(string[] args)
     {
@@ -256,5 +256,3 @@ public class Program
         app.Run();
     }
 }
-
-public partial class Program { }
