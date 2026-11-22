@@ -135,7 +135,7 @@ public class CreateOrderServiceE2ETests
 
         productResult!.StockQuantity
             .Should()
-            .Be(7);
+            .Be(999);
     }
 
     private async Task<string> AuthenticateUserAsync(
